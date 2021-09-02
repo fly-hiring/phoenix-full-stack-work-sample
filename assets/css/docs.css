@@ -1,0 +1,175 @@
+/* 
+|==========================================================================
+| Docs
+|-------------------------------------------------------------------------- 
+*/
+
+.docs article h2,
+.docs article h3,
+.docs article h4,
+.docs article h5,
+.docs article h6 {
+  @apply font-serif font-bold text-navy;
+  letter-spacing: -.025em;
+  word-spacing: .025em;
+}
+
+.docs article h1[id],
+.docs article h2[id],
+.docs article h3[id],
+.docs article h4[id],
+.docs article h5[id],
+.docs article h6[id] {
+  scroll-margin-top: 8rem;
+}
+
+.docs article h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+.docs article h3 {
+  @apply text-xl sm:text-2xl;
+}
+
+.docs article img {
+  @apply mx-auto my-14 max-w-full;  
+}
+
+.pt\:5\+6 {
+  padding-top: calc(var(--size-5) + var(--size-6));
+}
+
+.docs article p:not([class]),
+.docs article ul:not([class]),
+.docs article ol:not([class]),
+.docs article dl:not([class]),
+.docs article hr:not([class]),
+.docs article pre:not([class]),
+.docs article table:not([class]),
+.docs article input:not([class]),
+.docs article select:not([class]),
+.docs article textarea:not([class]),
+.docs article legend:not([class]),
+.docs article blockquote:not([class]),
+.docs article figure:not([class]),
+.docs article .button {
+  @apply mb-7;
+}
+
+.docs article p:empty {
+  display: none;
+}
+
+.docs div.highlight {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: var(--size-2);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--size-3);
+  border-radius: var(--round-lg);
+}
+
+.docs div.highlight > pre {
+  white-space: pre; 
+}
+
+.docs article :not(pre) > code {
+  color: var(--darker-violet);
+  padding: .0625em .3125em;
+  background: hsla(282, 55%, 38%, 0.075);
+  border-radius: var(--round-md);
+}
+
+.docs pre.highlight {
+  padding: 0;
+  margin: 0;
+}
+
+.cmd,
+.output {
+  position: relative;
+}
+
+.cmd pre.highlight {
+  padding-left: 1.5em;
+}
+
+.cmd .highlight:before {
+  content: '$ ';
+  color: var(--dark-green);
+}
+
+.cmd + div.output {
+  margin-top: calc(var(--size-3) * -1);
+  border-top: 1px solid var(--gray);
+  border-radius: 0 0 var(--round-lg) var(--round-lg);
+  box-shadow: 0 calc(var(--size-2) * -1) var(--darkest-gray);
+}
+
+.cmd .highlight:before,
+.output .highlight:before {
+  position: absolute;
+  left: var(--size-2);
+}
+
+/* Multi-line commands */
+.cmd + div.cmd {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: calc(var(--size-5) * -1);
+  padding-top: 0;
+}
+
+/* Apps page */
+.docs_apps pre {
+  background: var(--darkest-gray);
+  padding: var(--size-2);
+}
+
+.docs a.active {
+  color: var(--dark-blue);
+  pointer-events: none;
+}
+
+.docs a.active > .text\:code {
+  color: var(--dark-blue);
+  background: none;
+}
+
+.docs article ol li:before {
+  color: var(--dark-gray);
+}
+
+.docs article li p:last-of-type {
+  margin-bottom: 0;
+}
+
+.docs article li div.highlight {
+  margin-top: var(--size-3);
+}
+
+/* Stubbed target styles */
+.target\:shadow\:highlight:target {
+  box-shadow: var(--shadow-highlight);
+}
+
+/* Temporarily hide anchor buttons */
+.docs .w-auto.h-3\/5.mb-1,
+.highlight .group-hover\:opacity-100.opacity-0 {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .docs-right-sidebar {
+    right: 2rem;
+    left: auto;
+  }
+}
+
+@media (min-width: 96rem) {
+  .docs-right-sidebar {
+    left: calc(50vw + 31rem);
+    right: auto;
+  }
+}

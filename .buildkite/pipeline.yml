@@ -1,0 +1,6 @@
+steps:
+  - command:
+      - "curl -L https://fly.io/install.sh | FLYCTL_INSTALL=/usr/local sh"
+      - "flyctl deploy -a flyio-ui-ex --strategy rolling"
+    label: ":fly: flyct deploy"
+    branches: main

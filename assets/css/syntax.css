@@ -1,0 +1,212 @@
+/* 
+|==========================================================================
+| Pygments syntax highlighting
+|-------------------------------------------------------------------------- 
+*/
+
+.highlight {
+  @apply bg-gray-900 text-white;
+}
+
+/* Highlighted line */
+.highlight .hll {
+  @apply bg-gray-800;
+}
+
+/* Purple */
+.highlight .l,
+.highlight .kc,
+.highlight .kp,
+.highlight .kr,
+.highlight .nc,
+.highlight .no,
+.highlight .nd,
+.highlight .nt,
+.highlight .mh,
+.highlight .kd,
+.highlight .go .k,
+.highlight .language-html .na,
+.highlight .language-scss .nb,
+.highlight .language-scss .nf {
+  @apply text-violet-400;
+}
+
+/* Blue */
+.highlight .n,
+.highlight .w,
+.highlight .ld,
+.highlight .ni,
+.highlight .nl,
+.highlight .nn,
+.highlight .py,
+.highlight .bp,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .k,
+.highlight .language-scss .o,
+.highlight .language-css .o,
+.highlight .language-scss .s2,
+.highlight .language-css .s2 {
+  @apply text-cyan-400;
+}
+
+/* Subtle blue */
+.highlight .c,
+.highlight .p,
+.highlight .cm,
+.highlight .cp,
+.highlight .c1,
+.highlight .cs,
+.highlight .gu {
+  @apply text-gray-400;
+}
+
+/* Subtle yellow */
+.highlight .o,
+.highlight .ow {
+  @apply text-yellow-400 text-opacity-75;
+}
+
+/* Light blue */
+.highlight .ne,
+.highlight .nf,
+.highlight .gi {
+  @apply text-blue-400;
+}
+
+/* Light red */
+.highlight .m,
+.highlight .mf,
+.highlight .mo,
+.highlight .il,
+.highlight .mi,
+.highlight .nb {
+  @apply text-red-400;
+}
+
+/* Pink */
+.highlight .kn,
+.highlight .kt,
+.highlight .gd {
+  @apply text-fuchsia-400;
+}
+
+/* Green */
+.highlight .s,
+.highlight .na,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss,
+.highlight .se,
+.highlight .nv,
+.highlight .language-css .k {
+  @apply text-green-400;
+}
+
+/* Bold */
+.highlight .ge,
+.highlight .gs,
+.highlight .err {
+  @apply font-bold;
+}
+
+/* 
+|==========================================================================
+| Prism syntax highlighting
+|-------------------------------------------------------------------------- 
+*/
+
+/* Dark theme */
+[class*='language-'] {
+  @apply text-white bg-gray-900;
+}
+
+/* Highlighted line */
+.highlighted-line {
+  @apply bg-gray-800;
+}
+
+/* Purple */
+.language-php .token.operator,
+.token.atrule,
+.token.keyword {
+  @apply text-violet-400;
+}
+
+/* Blue */
+.language-markup .token.namespace,
+.token.attr-name,
+.token.selector,
+.token.tag,
+.token.tag *,
+.language-url,
+.token.function,
+.token.url,
+.token.title {
+  @apply text-cyan-400;
+}
+
+/* Subtle blue */
+.token.comment,
+.token.punctuation {
+  @apply text-gray-400;
+}
+
+/* Subtle yellow */
+.token.operator {
+  @apply text-yellow-400 text-opacity-75;
+}
+
+/* Light blue */
+.language-ruby .token.constant + .token.punctuation,
+.language-ruby .token.constant + .token.punctuation + .token.symbol,
+.token.boolean,
+.token.builtin,
+.token.class-name,
+.token.constant,
+.token.namespace {
+  @apply text-blue-400;
+}
+
+/* Light red */
+.token.number {
+  @apply text-red-400;
+}
+
+/* Pink */
+.language-css .token.property,
+.language-bash .token.option,
+.language-css .property,
+.token.parameter,
+.token.symbol {
+  @apply text-fuchsia-400;
+}
+
+/* Green */
+.language-bash .token.function,
+.language-html .token.attr-value > .punctuation:not(:first-child),
+.language-markup .token.attr-value > .punctuation:not(:first-child),
+.token.curl,
+.token.option,
+.token.variable,
+.token.macro .keyword,
+.token.attr-value,
+.token.macro,
+.token.string,
+.token.stripe,
+.token.value {
+  @apply text-green-400;
+}
+
+/* Bold */
+.token.important {
+  @apply font-bold;
+}

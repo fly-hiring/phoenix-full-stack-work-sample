@@ -1,0 +1,30 @@
+/* 
+|==========================================================================
+| Native form validation
+|-------------------------------------------------------------------------- 
+*/
+
+/* Valid state */
+[data-valid] [required] ~ [data-validation-marker] {
+  @apply bg-green-600;
+}
+
+/* Invalid state */
+[data-invalid] [required] ~ [data-validation-marker] {
+  background-color: #DC2626;
+}
+
+/* Validation message */
+[data-validation-message][data-tooltip] {
+  width: 100%;
+}
+
+[data-validation-message][data-tooltip] [data-tooltip-content] {
+  font-weight: 700;
+  background-color: #DC2626;
+  @apply shadow-lg;
+}
+
+[data-validation-message][data-tooltip] [data-tooltip-content]:before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 36 12' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M2.658 0h32.004c-6 0-11.627 12.002-16.002 12.002-4.375 0-10.066-12.002-16.002-12.002z' fill='%23DC2626'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,82 @@
+<div>
+  <div class="bg-gray-800 pb-32">
+    <nav class="bg-gray-800">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="border-b border-gray-700">
+          <div class="flex items-center justify-between h-16 px-4 sm:px-0">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                  <HeaderBreadcrumbs.render breadcrumbs={[{"Apps", Routes.app_index_path(@socket, :index)}]} />
+                </div>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              <%= link to: Routes.delete_session_path(@socket, :delete), method: :delete,
+                class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-700" do %>
+                Sign Out
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <header class="py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-white">
+          Apps
+        </h1>
+      </div>
+    </header>
+  </div>
+
+  <main class="-mt-32">
+    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="bg-white overflow-hidden sm:rounded-md">
+          <ul role="list" class="divide-y divide-gray-200">
+            <%= for app <- @apps do %>
+              <li>
+                <%= link to: Routes.app_show_path(@socket, :show, app["name"]), class: "block hover:bg-gray-50" do %>
+                  <div class="px-4 py-4 sm:px-6">
+                    <div class="flex items-center justify-between">
+                      <p class="text-sm font-medium text-indigo-600 truncate">
+                        <%= app["name"] %>
+                      </p>
+                      <div class="ml-2 flex-shrink-0 flex">
+                        <p class={"px-2 inline-flex text-xs leading-5 font-semibold rounded-full #{status_bg_color(app)} #{status_text_color(app)}"}>
+                          <%= app["status"] %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="mt-2 sm:flex sm:justify-between">
+                      <div class="sm:flex">
+                        <p class="flex items-center text-sm text-gray-500">
+                          <!-- Heroicon name: solid/users -->
+                          <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                          </svg>
+                          <%= app["organization"]["slug"] %>
+                        </p>
+                      </div>
+                      <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                        <p>
+                          Last deploy on
+                          <time datetime={app["currentRelease"]["createdAt"]}><%= app["currentRelease"]["createdAt"] %></time>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

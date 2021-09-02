@@ -1,0 +1,16 @@
+/* 
+|==========================================================================
+| Text
+|-------------------------------------------------------------------------- 
+*/
+
+.font-heading {
+  @apply font-serif font-bold;
+  letter-spacing: -.025em;
+  word-spacing: .025em;
+}
+
+.font-code {
+  @apply font-mono;
+  font-size: .875em;
+}

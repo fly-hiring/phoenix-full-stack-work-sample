@@ -1,0 +1,7 @@
+<!-- Ukraine -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <g buffered-rendering="static">
+    <path d="M150 0C67.157 0 0 67.157 0 150s67.157 150 150 150 150-67.157 150-150S232.843 0 150 0z" fill="#005bbb"/>
+    <path d="M300 150c0 82.843-67.157 150-150 150S0 232.843 0 150h300z" fill="#ffd500"/>
+  </g>
+</svg>

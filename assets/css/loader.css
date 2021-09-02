@@ -1,0 +1,92 @@
+/* 
+|==========================================================================
+| Loading indicators
+|-------------------------------------------------------------------------- 
+*/
+
+:root {
+  --dot-size: 6px;
+}
+
+.loader:not(.loading) {
+  opacity: 0;
+  z-index: -1;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  z-index: 30;
+  transition: var(--speed-medium) opacity;
+  pointer-events: none;
+}
+
+.loader.overlay {
+  background: hsla(218, 44%, 92%, .85);
+}
+
+.dots {
+  display: block;
+  position: relative;
+  width:  calc(var(--dot-size) * 6);
+  height: calc(var(--dot-size) * 6);
+}
+
+.dots:before,
+.dots:after {
+  content: '';
+}
+
+.dots:before,
+.dots:after,
+.dots span {
+  position: absolute;
+  top: calc(50% - var(--dot-size) / 2);
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  box-shadow: 0 0 0 calc(var(--dot-size) / 2) inset;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.dots:before {
+  left: calc(var(--dot-size) / 2);
+  animation: dot-one 0.6s infinite;
+}
+
+.dots:after {
+  left: calc(var(--dot-size) / 2);
+  animation: dot-two 0.6s infinite;
+}
+
+.dots span:first-child {
+  left: calc(var(--dot-size) * 2.5);
+  animation: dot-two 0.6s infinite;
+}
+
+.dots span:last-child {
+  left: calc(var(--dot-size) * 4.5);
+  animation: dot-three 0.6s infinite;
+}
+
+@keyframes dot-one {
+  0%   { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes dot-two {
+  0%   { transform: translate(0, 0);                         }
+  100% { transform: translate(calc(var(--dot-size) * 2), 0); }
+}
+
+@keyframes dot-three {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}

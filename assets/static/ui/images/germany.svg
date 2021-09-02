@@ -1,0 +1,13 @@
+<!-- Germany -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <g buffered-rendering="static">
+    <clipPath id="germany-a">
+      <path d="M150 0C67.157 0 0 67.157 0 150s67.157 150 150 150 150-67.157 150-150S232.843 0 150 0z" clip-rule="nonzero"/>
+    </clipPath>
+    <g clip-path="url(#germany-a)">
+      <path d="M-100 0h500v300h-500z"/>
+      <path fill="#d00" d="M-100 100h500v200h-500z"/>
+      <path fill="#ffce00" d="M-100 200h500v100h-500z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<!-- Australia -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <g buffered-rendering="static">
+    <circle cx="150" cy="150" r="150" fill="#00008b"/>
+    <g transform="translate(199.999 150)">
+      <clipPath id="australia-a">
+        <path d="M-199.999 0h200v-141.464c-15.638-5.527-32.47-8.536-50-8.536-82.843 0-150 67.157-150 150z" clip-rule="nonzero"/>
+      </clipPath>
+      <g clip-path="url(#australia-a)">
+        <path d="M0-150L-300 0m0-150L0 0" fill-rule="nonzero" stroke="#fff" stroke-width="35.16"/>
+      </g>
+    </g>
+    <g transform="translate(200 150)">
+      <clipPath id="australia-b">
+        <path d="M-150.001-111.805V-75l-22.675-11.338A150.16 150.16 0 00-179.933-75H-150l139.493-69.746C-23.089-148.171-36.333-150-50-150c-38.418 0-73.463 14.443-100.001 38.195zM-150-75L0 0h50v-75h-200zm-39.496 19.748C-196.275-38.153-200-19.513-200 0c0 8.52.709 16.868 2.074 25h47.925V-75l-39.495 19.748z" clip-rule="nonzero"/>
+      </clipPath>
+      <g clip-path="url(#australia-b)">
+        <path d="M0-150L-300 0m0-150L0 0" fill-rule="nonzero" stroke="red" stroke-width="18.75"/>
+      </g>
+    </g>
+    <clipPath id="australia-c">
+      <path d="M150 0C67.157 0 0 67.157 0 150s67.157 150 150 150 150-67.157 150-150S232.843 0 150 0z" clip-rule="nonzero"/>
+    </clipPath>
+    <g clip-path="url(#australia-c)">
+      <path d="M-100 75h350M50 0v175" fill-rule="nonzero" stroke="#fff" stroke-width="46.88"/>
+      <path d="M-100 75h310.547M50 0v160.547" fill-rule="nonzero" stroke="red" stroke-width="28.13"/>
+      <path d="M-100 150h300V0h100v200h-400v-50z" fill="#00008b" fill-rule="nonzero"/>
+      <path d="M50 180l8.678 26.981 26.505-10.038-15.684 23.607 24.373 14.464-28.235 2.456 3.888 28.074L50 245l-19.525 20.544 3.889-28.074-28.236-2.456 24.374-14.464-15.684-23.607 26.505 10.038L50 180zM275 109.822l4.132 12.848 12.621-4.78-7.468 11.241 11.606 6.888-13.445 1.17 1.851 13.368-9.297-9.783-9.298 9.783 1.852-13.368-13.445-1.17 11.606-6.888-7.469-11.241 12.621 4.78L275 109.822z" fill="#fff" fill-rule="nonzero"/>
+    </g>
+  </g>
+</svg>

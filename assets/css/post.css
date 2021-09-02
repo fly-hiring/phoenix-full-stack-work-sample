@@ -1,0 +1,340 @@
+/* Blog posts */
+.post section p:not([class]),
+.post section ul:not([class]),
+.post section ol:not([class]),
+.post section dl:not([class]),
+.post section h1:not([class]),
+.post section h2:not([class]),
+.post section h3:not([class]),
+.post section h4:not([class]),
+.post section h5:not([class]),
+.post section h6:not([class]),
+.post section table:not([class]) {
+  @apply mb-7;
+}
+
+.post section h2:not([class]),
+.post section h3:not([class]),
+.post section h4:not([class]) {
+  @apply mt-14 sm:mt-16;
+}
+
+.post section h1[id],
+.post section h2[id],
+.post section h3[id],
+.post section h4[id],
+.post section h5[id],
+.post section h6[id] {
+  scroll-margin-top: 2.5rem;
+}
+
+.post section h1 code,
+.post section h2 code,
+.post section h3 code,
+.post section h4 code,
+.post section h5 code,
+.post section h6 code {
+  @apply tracking-normal;
+} 
+
+.post section a:not([class]) {
+  @apply text-navy underline underline-offset-sm underline-thickness-1 hover:text-violet-600 transition-all;
+}
+
+.post section .changelog-item a:not([class]) {
+  @apply text-current;
+}
+
+.post section h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+.post section h3 {
+  @apply text-xl sm:text-2xl;
+}
+
+.post div.highlight {
+  @apply rounded-xl p-8 my-10 text-[90%] lg:-mx-8;
+}
+
+.post :not(a):not(pre):not(.changelog-item) > code {
+  @apply text-violet-600 text-[93%] pb-0.5 bg-violet-50;
+}
+
+.post a > code {
+  @apply text-current;
+}
+
+.post .changelog-item > code {
+  @apply font-bold;
+}
+
+.post section hr {
+  @apply border-0 h-4 text-center my-16 text-navy;
+}
+
+.post section hr:after {
+  content: '\2736\2736\2736\2736';
+  @apply relative top-[-0.25em] tracking-[20px];
+  text-indent: 20px;
+}
+
+.post pre.highlight {
+  @apply p-0 m-0;
+}
+
+.post .cmd,
+.post .output {
+  @apply relative;
+}
+
+.post .cmd pre.highlight {
+  @apply pl-5;
+}
+
+.post .cmd .highlight:before {
+  content: '$ ';
+  @apply text-green-400;
+}
+
+.post .cmd + div.output {
+  @apply -mt-10 border-t border-gray-700 rounded-t-none;
+  box-shadow: 0 -2rem hsl(221, 50%, 11%);
+}
+
+.post .cmd .highlight:before,
+.post .output .highlight:before {
+  @apply absolute left-8;
+}
+
+/* Multi-line commands */
+.post .cmd + div.cmd {
+  @apply rounded-t-none mt-[-4.5rem] pt-0;
+}
+
+.post article p img {
+  @apply mx-auto lg:-mx-8 my-14 max-w-full lg:max-w-[52rem];
+}
+
+.post article p > img.center {
+  @apply block mx-auto;
+}
+
+.post section blockquote {
+  @apply relative my-12 text-xl font-medium text-navy pl-10 tracking-tight;
+}
+
+.post section blockquote:before {
+  content: '';
+  @apply absolute right-full top-0 w-[3px] h-full bg-gradient-to-b from-purple-500 to-indigo-800;
+}
+
+.post section blockquote p:first-of-type:before {
+  content: '“';
+  @apply absolute -ml-4 text-violet-300 text-3xl;
+}
+
+.post section blockquote p:last-of-type:after {
+  content: '”';
+  @apply absolute ml-1 text-violet-300 text-3xl;
+}
+
+.post article li.changelog-item {
+  @apply mx-0 mt-0;
+}
+
+.post article li.changelog-item:before {
+  @apply hidden;
+}
+
+.post li[class*='bg:'] > code {
+  @apply text-current p-0 font-bold bg-transparent;
+}
+
+.post article ol {
+  counter-reset: a;
+  @apply list-none;
+}
+
+.post article ol > li {
+  @apply list-none relative ml-0;
+  padding-left: 1.75em;
+}
+
+.post article ol > li:before {
+  counter-increment: a;
+  @apply font-bold text-right absolute left-0;
+  top: .05em;
+  width: 1.5em;
+  font-size: .8em;
+  content: counter(a) ".";
+}
+
+.post article li:before {
+  @apply text-navy;
+}
+
+.post article ul {
+  margin-top: -.2em;
+}
+
+.post article ul li {
+  @apply relative;
+  margin-left: 1.25em;
+  margin-top: .2em;
+}
+
+.post article ul li + li {
+  margin-top: .2em;
+}
+
+.post article li ul {
+  @apply mb-0;
+  margin-top: .2em;
+  padding-left: 1em;
+}
+
+.post article ul li:before {
+  content: '\2022';
+  @apply absolute text-navy;
+  left: -1.25em;
+}
+
+.post article .lead {
+  @apply font-semibold text-navy tracking-tight text-xl mb-7;
+}
+
+.post article .lead strong {
+  @apply text-green-700;
+}
+
+.post article .callout {
+  @apply bg-gray-100 rounded-xl p-8 my-12 text-base text-navy lg:-mx-8;
+}
+
+.post article .callout h2 {
+  @apply text-2xl;
+}
+
+.post article .callout:not(pre):not(.changelog-item) code {
+  @apply text-current bg-blue-100;
+}
+
+.post article .callout > *:first-child {
+  @apply mt-0;
+}
+
+.post article .callout > *:last-child {
+  @apply mb-0;
+}
+
+.post article .callout h3 {
+  @apply text-xl;
+}
+
+.post article .embed {
+  @apply relative mx-auto my-14 max-w-full w-auto;
+}
+
+.post article .embed:before {
+  content: '';
+  @apply block w-full;
+  padding-top: 56.25%
+}
+
+.post article .embed > * {
+  @apply absolute inset-0 w-full h-full;
+}
+
+.post article img[src*="?1\/4"],
+.post article img[src*="&1\/4"] {
+  @apply w-48 max-w-full;
+}
+
+.post article img[src*="?1\/3"],
+.post article img[src*="&1\/3"] {
+  @apply w-64 max-w-full;
+}
+
+.post article img[src*="?1\/2"],
+.post article img[src*="&1\/2"] {
+  @apply w-96 max-w-full;
+}
+
+.post article img[src*="?2\/3"],
+.post article img[src*="&2\/3"] {
+  @apply w-[32rem] max-w-full;
+}
+
+.post article img[src*="?3\/4"],
+.post article img[src*="&3\/4"] {
+  @apply w-[36rem] max-w-full;
+}
+
+.post article img[src*="?shadow"],
+.post article img[src*="&shadow"] {
+  @apply shadow-lg;
+}
+
+.post article img[src*="?rounded"],
+.post article img[src*="&rounded"] {
+  @apply rounded-xl;
+}
+
+.post article img[src*="?card"],
+.post article img[src*="&card"] {
+  @apply rounded-xl shadow-lg;
+}
+
+.post article p img[src*="?left"],
+.post article p img[src*="&left"] {
+  @apply ml-0 mr-auto float-none;
+}
+
+.post article p img[src*="?right"],
+.post article p img[src*="&right"] {
+  @apply ml-auto mr-0 float-none;
+}
+
+.post article p img[src*="?center"],
+.post article p img[src*="&center"] {
+  @apply block mx-auto;
+}
+
+.post article p img[src*="?wrap-left"],
+.post article p img[src*="&wrap-left"] {
+  @apply block float-left mr-10 ml-px mt-0 mb-10;
+}
+
+.post article p img[src*="?wrap-right"],
+.post article p img[src*="&wrap-right"] {
+  @apply block float-right ml-10 mr-px mt-0 mb-10;
+}
+
+.post article .post-cta {
+  @apply rounded-xl pl-8 pr-8 sm:pr-72 md:pr-80 lg:pr-96 py-8 my-16 text-base text-white text-opacity-75 lg:-mx-8 relative flex bg-gradient-to-br from-purple-500 to-indigo-800;
+}
+
+.post article .post-cta h1 {
+  @apply font-serif font-bold text-white text-2xl mb-4 tracking-tight word-spacing-wide;
+}
+
+.post article .post-cta figcaption > *:first-child {
+  @apply mt-0;
+}
+
+.post article .post-cta figcaption > *:last-child {
+  @apply mb-0;
+}
+
+.post article .post-cta .image-container {
+  @apply absolute top-0 right-12 sm:w-48 md:w-60 lg:w-72 h-full;
+}
+
+.post article .post-cta img {
+  @apply hidden sm:block absolute left-0 top-0 w-full h-full m-auto object-cover transform rotate-6 origin-center shadow-md rounded-md p-2 bg-white ring-1 ring-violet-600 ring-opacity-10;
+}
+
+.post section table th:empty {
+  @apply hidden;
+}

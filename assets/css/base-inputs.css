@@ -1,0 +1,68 @@
+/* Styles for base inputs */
+
+/* Text input */
+.form-text-field > input {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+/* Colors to use when has error */
+.form-text-field.has-error > input:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Multiple Select */
+.form-multiple-select-field > select {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+/* Colors to use when has error */
+.form-multiple-select-field.has-error > select:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Email input */
+.form-email-field > input[type="email"] {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+/* Colors to use when has error */
+.form-email-field.has-error > input[type="email"]:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Password input */
+.form-password-field > input[type="password"] {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+/* Colors to use when has error */
+.form-password-field.has-error > input[type="password"]:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Textarea input */
+.form-textarea-field > textarea {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+/* Colors to use when has error */
+.form-textarea-field.has-error > textarea:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Select input */
+.form-select-field > select {
+  @apply shadow-sm block w-full rounded-md sm:text-sm focus:outline-none;
+  /* Normal colors when no error */
+  @apply border-gray-300 focus:ring-indigo-500 focus:border-indigo-500;
+}
+
+/* Colors to use when has error */
+.form-select-field.has-error > select:not(.phx-no-feedback) {
+  @apply border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500;
+}

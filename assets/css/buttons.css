@@ -1,0 +1,112 @@
+/* 
+|==========================================================================
+| Buttons
+|-------------------------------------------------------------------------- 
+*/
+
+/* Base */
+.button-xs,
+.button-sm,
+.button,
+.button-lg,
+.button-xl,
+.button-2xl {
+  @apply inline-flex items-center justify-center font-semibold leading-tight rounded-lg whitespace-nowrap transition-all;
+}
+
+/* Sizes */
+.button-xs {
+  @apply text-sm px-1;
+  height: 30px;
+}
+
+.button-sm {
+  @apply text-sm px-3;
+  height: 34px;
+}
+
+.button {
+  @apply text-sm px-3;
+  height: 38px;
+}
+
+.button-lg { 
+  @apply text-sm px-4;
+  height: 42px;
+}
+
+.button-xl {
+  @apply text-base px-5;
+  height: 48px;
+}
+
+.button-2xl {
+  @apply text-lg px-6;
+  height: 60px;
+}
+
+/* States */
+.button-red {
+  @apply text-red-600;
+}
+
+.button-red:hover,
+.button-red:focus,
+.button-red:active {
+  @apply text-red-800;
+}
+
+/* Dat emerald doh */
+.button-emerald {
+  @apply text-emerald-900 bg-emerald-400 rounded-lg transform outline-none transition-all;
+}
+
+.button-emerald:hover {
+  @apply scale-95;
+}
+
+.button-emerald:focus {
+  @apply outline-none ring ring-emerald-300 ring-opacity-75;
+}
+
+.button-emerald:hover,
+.button-emerald:focus {
+  @apply bg-emerald-300 text-emerald-800;
+}
+
+.button-shadow {
+  @apply shadow;
+}
+
+.button-shadow:hover, 
+.button-shadow:focus, 
+.button-shadow:active {
+  @apply shadow-lg;
+}
+
+.button-outline {
+  @apply border border-gray-300 shadow-sm text-violet-500 rounded-lg transform outline-none transition-all;
+}
+
+.button-outline:hover {
+  @apply scale-95 border-violet-300 shadow-none;
+}
+
+.button-outline:focus {
+  @apply outline-none border-violet-500 ring ring-violet-500 ring-opacity-50;
+}
+
+.button-outline:hover,
+.button-outline:focus {
+  @apply text-violet-700;
+}
+
+/* Disabled */
+.button-xs[disabled],
+.button-sm[disabled],
+.button[disabled],
+.button-lg[disabled],
+.button-xl[disabled] {
+  background-image: none !important;
+  @apply cursor-default text-gray-600 bg-gray-300 border-transparent shadow-none select-none !important;
+}

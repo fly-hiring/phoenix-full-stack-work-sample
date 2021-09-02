@@ -1,0 +1,8 @@
+<div class="relative w-full h-full">
+  <%= @inner_content %>
+
+  <FlyWeb.Components.flash_alert flash={@flash} type={:success} />
+  <FlyWeb.Components.flash_alert flash={@flash} type={:info} />
+  <FlyWeb.Components.flash_alert flash={@flash} type={:warn} />
+  <FlyWeb.Components.flash_alert flash={@flash} type={:error} />
+</div>

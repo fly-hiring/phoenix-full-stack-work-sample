@@ -1,0 +1,6 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+  <path d="M300 150c0 82.843-67.157 150-150 150S0 232.843 0 150C0 67.158 67.157 0 150 0s150 67.158 150 150z" fill="#fff" />
+  <path d="M300 150c0 82.843-67.157 150-150 150S0 232.843 0 150C0 67.158 67.157 0 150 0s150 67.158 150 150z" fill="#d52c27" fill-rule="nonzero" />
+  <path d="M150 0v150H0C0 67.158 67.157 0 150 0z" fill="#1e419b" fill-rule="nonzero" />
+  <path d="M39.335 63.412l22.042 16.015-8.42 25.911L75 89.324l22.041 16.014-8.419-25.911 22.043-16.015H83.419L75 37.5l-8.42 25.912H39.335z" fill="#fff" fill-rule="nonzero" />
+</svg>

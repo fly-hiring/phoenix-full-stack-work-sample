@@ -1,0 +1,73 @@
+/* 
+|==========================================================================
+| Table presentation styles
+|-------------------------------------------------------------------------- 
+*/
+
+/* Ruled cells */
+.table-rule td,
+.table-rule th {
+  @apply border-b;
+}
+
+.table-rule tr:last-child td,
+.table-rule tbody tr:last-child th {
+  @apply border-b-0;
+}
+
+/* Outlined cells */
+.table-outline {
+  @apply border-collapse;
+}
+
+.table-outline td,
+.table-outline th {
+  @apply border;
+}
+
+/* Striped rows */
+.table-stripe tbody tr:nth-child(2n+1),
+.table-stripe-odd tbody tr:nth-child(2n+1),
+.table-stripe-even tbody tr:nth-child(2n) {
+  @apply bg-gray-50;
+}
+
+/* Equal-width columns */
+.table-stretch {
+  @apply table-fixed min-w-full;
+}
+
+/* Expand first or last column */
+.table-expand-first,
+.table-expand-last {
+  @apply w-auto;
+}
+
+.table-expand-first th,
+.table-expand-first td,
+.table-expand-last th,
+.table-expand-last td {
+  @apply whitespace-nowrap;
+}
+
+.table-expand-first tr > td:first-child,
+.table-expand-first tr > th:first-child,
+.table-expand-last tr > td:last-child,
+.table-expand-last tr > th:last-child {
+  @apply w-full;
+}
+
+.table-condense th,
+.table-condense td {
+  @apply px-1 py-1.5;
+}
+
+.table-pad th,
+.table-pad td {
+  @apply px-3.5 py-4;
+}
+
+.table-reset th,
+.table-reset td {
+  @apply p-0;
+}

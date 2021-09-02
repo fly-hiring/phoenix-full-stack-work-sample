@@ -1,0 +1,8 @@
+/**
+  * LoadFont 0.0.3
+  * A font loader that leverages LocalStorage
+  * @author Adam Beres-Deak (@bdadam) & Kyle Foster (@hkfoster)
+  * @source https://github.com/bdadam/OptimizedWebfontLoading
+  * @license MIT
+  **/
+var localStorageAvailable=function(e){var t="test",a=window.localStorage;try{return a.setItem(t,"1"),a.removeItem(t),!0}catch(e){return!1}}(),loadFont=function(e,t,a){if(localStorageAvailable){var n={};try{n=localStorage||{}}catch(e){}var o="x-font-"+e,l=o+"url",r=o+"css",s=n[l],c=n[r],u=s===t,d=document.createElement("style");if(d.rel="stylesheet",document.head.appendChild(d),c&&u)d.textContent=c;else{var i=new XMLHttpRequest;i.open("GET",t),i.onload=function(){i.status>=200&&i.status<400&&(n[l]=t,n[r]=i.responseText,a||(d.textContent=i.responseText))},i.send()}}};

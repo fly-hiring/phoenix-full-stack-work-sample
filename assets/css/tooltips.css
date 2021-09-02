@@ -1,0 +1,297 @@
+/* 
+|==========================================================================
+| Tooltips - based on https://github.com/kazzkiq/balloon.css
+|-------------------------------------------------------------------------- 
+*/
+
+/*
+|=====================================
+| Base
+|-------------------------------------
+*/
+
+[data-tooltip] {
+  position: relative;
+  font-weight: 500;
+}
+
+[data-tooltip] code {
+  @apply bg-gray-900;
+  box-shadow: none;
+  word-break: break-all;
+}
+
+[data-tooltip] > * {
+  position: relative;
+}
+
+[data-tooltip]:before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  right: -12px;
+  bottom: -12px;
+}
+
+/*
+|=====================================
+| Content
+|-------------------------------------
+*/
+
+[data-tooltip-content] {
+  @apply text-xs bg-gray-900;
+  position: absolute;
+  pointer-events: none;
+  border-radius: 5px;
+  color: white;
+  padding: .8em 1.2em;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 10;
+  position: absolute;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: opacity 0.1s linear, transform 0.1s linear;
+}
+
+[data-tooltip-content]:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 6px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 36 12' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M2.658 0h32.004c-6 0-11.627 12.002-16.002 12.002-4.375 0-10.066-12.002-16.002-12.002z' fill='%23currentColor'/%3E%3C/svg%3E") 0 0/100% auto no-repeat;
+}
+
+/*
+|=====================================
+| Visibility
+|-------------------------------------
+*/
+
+[data-tooltip-visible=true] [data-tooltip-content] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+[data-tooltip]:not([data-tooltip-visible=false]):hover [data-tooltip-content], 
+[data-tooltip]:not([data-tooltip-visible=false]):focus [data-tooltip-content], 
+[data-tooltip]:not([data-tooltip-visible=false]):active [data-tooltip-content] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+[data-tooltip-break] [data-tooltip-content] {
+  white-space: pre;
+}
+
+[data-tooltip-blunt] [data-tooltip-content] {
+  transition: none;
+}
+
+/*
+|=====================================
+| Position
+|-------------------------------------
+*/
+
+[data-tooltip]:not([data-tooltip-position]) [data-tooltip-content],
+[data-tooltip-position=''] [data-tooltip-content],
+[data-tooltip-position=up] [data-tooltip-content] {
+  left: 50%;
+  bottom: calc(100% + 12px);
+  transform: translate3d(-50%, 10px, 0);
+  transform-origin: top;
+}
+
+[data-tooltip]:not([data-tooltip-position]) [data-tooltip-content]:before,
+[data-tooltip-position=''] [data-tooltip-content]:before,
+[data-tooltip-position=up] [data-tooltip-content]:before {
+  left: calc(50% - 9px);
+  top: 100%;
+}
+
+[data-tooltip]:not([data-tooltip-position]):hover [data-tooltip-content], 
+[data-tooltip]:not([data-tooltip-position]):focus [data-tooltip-content], 
+[data-tooltip]:not([data-tooltip-position]):active [data-tooltip-content], 
+[data-tooltip]:not([data-tooltip-position])[data-tooltip-visible=true] [data-tooltip-content],
+[data-tooltip-position='']:hover [data-tooltip-content],
+[data-tooltip-position='']:focus [data-tooltip-content],
+[data-tooltip-position='']:active [data-tooltip-content],
+[data-tooltip-position=''][data-tooltip-visible=true] [data-tooltip-content],
+[data-tooltip-position=up]:hover [data-tooltip-content],
+[data-tooltip-position=up]:focus [data-tooltip-content],
+[data-tooltip-position=up]:active [data-tooltip-content],
+[data-tooltip-position=up][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(-50%, 0, 0);
+}
+
+[data-tooltip-position='up-right'] [data-tooltip-content] {
+  left: 0;
+  bottom: calc(100% + 12px);
+  transform: translate3d(0, 10px, 0);
+  transform-origin: top;
+}
+
+[data-tooltip-position='up-right'] [data-tooltip-content]:before {
+  left: 12px;
+  top: 100%;
+}
+
+[data-tooltip-position='up-right']:hover [data-tooltip-content], 
+[data-tooltip-position='up-right']:focus [data-tooltip-content], 
+[data-tooltip-position='up-right']:active [data-tooltip-content], 
+[data-tooltip-position='up-right'][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-tooltip-position='up-left'] [data-tooltip-content] {
+  right: 0;
+  bottom: calc(100% + 12px);
+  transform: translate3d(0, 10px, 0);
+  transform-origin: top;
+}
+
+[data-tooltip-position='up-left'] [data-tooltip-content]:before {
+  right: 12px;
+  top: 100%;
+}
+
+[data-tooltip-position='up-left']:hover [data-tooltip-content], 
+[data-tooltip-position='up-left']:focus [data-tooltip-content], 
+[data-tooltip-position='up-left']:active [data-tooltip-content], 
+[data-tooltip-position='up-left'][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-tooltip-position=down] [data-tooltip-content] {
+  left: 50%;
+  top: calc(100% + 9px);
+  transform: translate3d(-50%, -10px, 0);
+}
+
+[data-tooltip-position=down] [data-tooltip-content]:before {
+  left: calc(50% - 9px);
+  bottom: 100%;
+  transform: rotate(180deg);
+}
+
+[data-tooltip-position=down]:hover [data-tooltip-content], 
+[data-tooltip-position=down]:focus [data-tooltip-content], 
+[data-tooltip-position=down]:active [data-tooltip-content], 
+[data-tooltip-position=down][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(-50%, 0, 0);
+}
+
+[data-tooltip-position='down-right'] [data-tooltip-content] {
+  left: 0;
+  top: calc(100% + 12px);
+  transform: translate3d(0, -10px, 0);
+}
+
+[data-tooltip-position='down-right'] [data-tooltip-content]:before {
+  left: 12px;
+  bottom: 100%;
+  transform: rotate(180deg);
+}
+
+[data-tooltip-position='down-right']:hover [data-tooltip-content], 
+[data-tooltip-position='down-right']:focus [data-tooltip-content], 
+[data-tooltip-position='down-right']:active [data-tooltip-content], 
+[data-tooltip-position='down-right'][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-tooltip-position='down-left'] [data-tooltip-content] {
+  right: 0;
+  top: calc(100% + 12px);
+  transform: translate3d(0, -10px, 0);
+}
+
+[data-tooltip-position='down-left'] [data-tooltip-content]:before {
+  right: 12px;
+  bottom: 100%;
+  transform: rotate(180deg);
+}
+
+[data-tooltip-position='down-left']:hover [data-tooltip-content], 
+[data-tooltip-position='down-left']:focus [data-tooltip-content], 
+[data-tooltip-position='down-left']:active [data-tooltip-content], 
+[data-tooltip-position='down-left'][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-tooltip-position=left] [data-tooltip-content] {
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translate3d(10px, -50%, 0);
+}
+
+[data-tooltip-position=left] [data-tooltip-content]:before {
+  left: calc(100% - 6px);
+  top: calc(50% - 3px);
+  transform: rotate(-90deg);
+}
+
+[data-tooltip-position=left]:hover [data-tooltip-content], 
+[data-tooltip-position=left]:focus [data-tooltip-content], 
+[data-tooltip-position=left]:active [data-tooltip-content], 
+[data-tooltip-position=left][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, -50%, 0);
+}
+
+[data-tooltip-position=right] [data-tooltip-content] {
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translate3d(-10px, -50%, 0);
+}
+
+[data-tooltip-position=right] [data-tooltip-content]:before {
+  right: calc(100% - 6px);
+  top: calc(50% - 3px);
+  transform: rotate(90deg);
+}
+
+[data-tooltip-position=right]:hover [data-tooltip-content], 
+[data-tooltip-position=right]:focus [data-tooltip-content], 
+[data-tooltip-position=right]:active [data-tooltip-content], 
+[data-tooltip-position=right][data-tooltip-visible=true] [data-tooltip-content] {
+  transform: translate3d(0, -50%, 0);
+}
+
+/* ===================================== *
+ * Size
+ * ------------------------------------- */
+ 
+[data-tooltip-size=small] [data-tooltip-content] {
+  white-space: normal;
+  width: 80px;
+}
+
+[data-tooltip-size=medium] [data-tooltip-content] {
+  white-space: normal;
+  width: 150px;
+}
+
+[data-tooltip-size=large] [data-tooltip-content] {
+  white-space: normal;
+  width: 260px;
+}
+
+[data-tooltip-size=xlarge] [data-tooltip-content] {
+  white-space: normal;
+  width: 380px;
+}
+
+@media screen and (max-width: 768px) {
+  [data-tooltip-size=xlarge] [data-tooltip-content] {
+    white-space: normal;
+    width: 90vw;
+  }
+}
+
+[data-tooltip-size=fit]:after {
+  white-space: normal;
+  width: 100%;
+}

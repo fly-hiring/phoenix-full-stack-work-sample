@@ -1,0 +1,12 @@
+<!-- Japan -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <g buffered-rendering="static">
+    <clipPath id="japan-a">
+      <path d="M150 0C67.157 0 0 67.157 0 150s67.157 150 150 150 150-67.157 150-150S232.843 0 150 0z" clip-rule="nonzero"/>
+    </clipPath>
+    <g clip-path="url(#japan-a)">
+      <path fill="#fff" d="M-75 0h450v300H-75z"/>
+      <path d="M150 60c49.706 0 90 40.294 90 90s-40.294 90-90 90-90-40.294-90-90 40.294-90 90-90" fill="#bc002d" fill-rule="nonzero"/>
+    </g>
+  </g>
+</svg>

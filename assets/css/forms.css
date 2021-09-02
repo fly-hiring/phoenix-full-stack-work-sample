@@ -1,0 +1,26 @@
+/* 
+|==========================================================================
+| Forms
+|-------------------------------------------------------------------------- 
+*/
+
+.outline:focus-within .label {
+  @apply text-purple-500;
+}
+
+.outline:focus-within .label,
+.outline input:not(:placeholder-shown) ~ .label,
+.outline textarea:not(:placeholder-shown) ~ .label,
+.outline [data-selected] ~ .label {
+  @apply scale-75 translate-y-label translate-x-0;
+}
+
+label.outline[data-invalid] {
+  @apply border-red-400 ring-red-300;
+}
+
+label.outline[data-invalid] input,
+label.outline[data-invalid] textarea,
+label.outline[data-invalid] .label {
+  @apply text-red-600;
+}
