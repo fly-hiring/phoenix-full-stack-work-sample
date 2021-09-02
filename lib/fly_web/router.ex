@@ -2,35 +2,38 @@ defmodule FlyWeb.Router do
   use FlyWeb, :router
 
   pipeline :browser do
-    plug(:accepts, ["html"])
-    plug(:fetch_session)
-    plug(:fetch_live_flash)
-    plug(:put_root_layout, {FlyWeb.LayoutView, :root})
-    plug(:protect_from_forgery)
-    plug(:put_secure_browser_headers)
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {FlyWeb.LayoutView, :root}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
-    plug(:accepts, ["json"])
+    plug :accepts, ["json"]
   end
 
   pipeline :authenticated do
-    plug(FlyWeb.Plugs.RequireSession, "/")
+    plug FlyWeb.Plugs.RequireSession, "/"
   end
 
   scope "/", FlyWeb do
-    pipe_through([:browser, :authenticated])
+    pipe_through [:browser, :authenticated]
 
-    get("/", Plugs.Redirect, to: "/apps")
-    live("/apps", AppLive.Index, :index)
-    live("/apps/:name", AppLive.Show, :show)
+    get "/", Plugs.Redirect, to: "/apps"
+
+    live_session :authenticated, on_mount: FlyWeb.Plugs.RequireSession do
+      live "/apps", AppLive.Index, :index
+      live "/apps/:name", AppLive.Show, :show
+    end
   end
 
   scope "/", FlyWeb do
-    pipe_through(:browser)
+    pipe_through :browser
 
-    delete("/session/destroy", SessionController, :delete, as: "delete_session")
-    resources("/session", SessionController, only: [:new, :create])
+    delete "/session/destroy", SessionController, :delete, as: "delete_session"
+    resources "/session", SessionController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.
@@ -49,8 +52,8 @@ defmodule FlyWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through(:browser)
-      live_dashboard("/dashboard", metrics: FlyWeb.Telemetry)
+      pipe_through :browser
+      live_dashboard "/dashboard", metrics: FlyWeb.Telemetry
     end
   end
 end

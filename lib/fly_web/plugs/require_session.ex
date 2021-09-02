@@ -1,5 +1,20 @@
 defmodule FlyWeb.Plugs.RequireSession do
+  import Phoenix.LiveView
   alias FlyWeb.Router.Helpers, as: Routes
+
+  ## LiveView Callbacks
+
+  def mount(_params, session, socket) do
+    case session do
+      %{"auth_token" => user_id} ->
+        {:cont, assign_new(socket, :user_id, fn -> user_id end)}
+
+      %{} ->
+        {:halt, Phoenix.LiveView.redirect(socket, to: Routes.session_path(socket, :new))}
+    end
+  end
+
+  ## Plug Callbacks
 
   def init(default_url), do: default_url
 
@@ -9,11 +24,9 @@ defmodule FlyWeb.Plugs.RequireSession do
         conn
 
       nil ->
-        new_session_path = Routes.session_path(conn, :new)
-
         conn
         |> set_redirect_url(conn.request_path)
-        |> Phoenix.Controller.redirect(to: new_session_path)
+        |> Phoenix.Controller.redirect(to: Routes.session_path(conn, :new))
         |> Plug.Conn.halt()
     end
   end
