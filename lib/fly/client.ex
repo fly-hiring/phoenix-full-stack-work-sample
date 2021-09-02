@@ -313,6 +313,11 @@ defmodule Fly.Client do
     {:error, "Error making API request"}
   end
 
+  def handle_response({:error, reason}) do
+    Logger.warn("Error issuing HTTP request. Error: #{inspect(reason)}")
+    {:error, "Error making API request"}
+  end
+
   @spec check_http_response(url :: String.t()) :: :ready | :not_ready | {:error, String.t()}
   def check_http_response(url) do
     url
