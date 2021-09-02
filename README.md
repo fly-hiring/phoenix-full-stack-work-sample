@@ -1,14 +1,16 @@
 # Fly.io Full Stack Phoenix Hiring Project
 
-Hello! This is a hiring project for our [Full Stack developer position](https://fly.io/blog/fly-io-is-hiring-full-stack-developers/). If you apply, we'll ask you to do this project so we can assess your ability to design and build customer facing UX with the fly.io GraphQL api in an Elixir/Phoenix/LiveView application. 
+Hello! This is a hiring project for our [Full Stack developer position](https://fly.io/blog/fly-io-is-hiring-full-stack-developers/). If you apply, we'll ask you to do this project so we can assess your ability build customer facing features with the Fly.io GraphQL api in an Elixir/Phoenix/LiveView application.
 
 ## The Job
 
-As a full stack developer at fly.io, you'll be working with the parts of our product that customers interact directly with, such as our web dashboard, conversion funnels, landing pages, blog, and critical systems for authentication, billing, emails, and more. Most of our UX stack is built on Ruby and Rails, but after falling in love with Phoenix, we'll be doing a lot more Phoenix than Rails. To be effective in this role, you'll need to be comfortable working in both Rails and Phoenix, but it's okay to learn on the fly.
+As a full stack developer at Fly.io, you'll be working with the parts of our product that customers interact directly with, such as our web dashboard, conversion funnels, landing pages, blog, and critical systems for authentication, billing, emails, and more. Most of our UX stack is built on Ruby and Rails, but after falling in love with Phoenix, we'll be doing a lot more Phoenix than Rails. To be effective in this role, you'll need to get comfortable working in both Rails and Phoenix, but it's okay to learn on the fly.
 
 ## Hiring Project
 
-This app is a simplified version of the fly.io web dashboard built with the [Phoenix Framework](https://phoenixframework.org). It uses our GraphQL api to fetch data from your account and render it with LiveView. You can see a running version here: https://full-stack-phoenix-starter.fly.dev. 
+This app is a simplified version of the fly.io web dashboard built with the [Phoenix Framework](https://phoenixframework.org). It uses our GraphQL api to fetch data from your account and render it with LiveView. You can see a running version here: https://full-stack-phoenix-starter.fly.dev.
+
+This project is built on Elixir Phoenix. It's ok if you don't yet know Elixir or Phoenix! We think you can learn, and are happy to have you learn while you do this project if you'd like.
 
 Right now it has a list of your apps, and clicking on one loads a detail page. We need you to improve it.
 
@@ -37,31 +39,37 @@ ed63d501 web    118     iad    run     running 1 total, 1 passing 0        2h38m
 3bf5f208 worker 118     iad    run     running                    0        2h39m ago 
 ```
 
-We want you to add this to the web dashboard. And because it has LiveView, it should refresh every few seconds. The design is up to you -- make the best UX you can reasonably build in the available time. 
+We want you to add this to the web dashboard. And because it has LiveView, it should refresh every few seconds. The design is up to you -- make the best UX you can reasonably build in a reasonable amount of time. 
 
-We expect this to take about 4 hours if you're experienced with Rails, and a little less if you know Phoenix. We're not timing you so you can spend as much time as you need.
+We expect this to take about 4 hours if you're experienced with Rails, and a little less if you know Phoenix. We're not timing you, though. If you're learning and enjoying the project, spend as much time as you want.
 
 ### Submitting your work
 
 Once you're happy with your work, deploy it to a new fly app so we can see it in action. The repo already has a `Dockerfile`, so it should be as simple as `flyctl launch`.
 
-Then submit the following:
+Then submit the following via email:
 - a link to your live app
 - a link to your source code
-- a short summary of
-  - what you did and why you did it
+- add a `notes.md` file with a short summary of
+  - what you built and what you didn't build
   - what you'd improve or fix if you had more time
   - how you'd determine if this feature is successful
 
-After you've submitted your work, we'll have 3 fly engineers evaluate it. This takes 3-5 days and we'll let you know as soon as we have results.
+After you've submitted your project, we'll have 3 Fly.io engineers evaluate your work with standardized criteria. This takes 3-5 days and we'll let you know as soon as we have results.
 
 ### What we care about
 
-- Always strive to make the best developer UX possible.
+- Always strive to make the best developer UX possible (a great UX can be ugly, though! we're not grading you on graphic design skills)
 - Don't spend time making this perfect. Rough edges are fine if it helps you move quickly, just note them in the summary.
-- Your code should be clear and idiomatic.
-- If something is too challenging, try to get by without it and explain what you wanted to do in the summary.
-- Don't spend time on tests for this sample.
+- Your code should be clear and easy to understand.
+- If something is too complicated, try to get by without it and explain what you wanted to do in the summary.
+- The notes are important! We want to know how you think about end users, how you ma
+
+### What we don't care about
+
+- Don't spend time writing tests for this sample. Tests are great, but time consuming.
+- If you're like us, pride pushes you to make things better than they need to be. Don't do that for this project. Channel that energy into your notes, keep the scope of your code small.
+- Edge cases. Don't solve every scenario in code. If you think of edge cases or gotchas that might affect users, put 'em in your notes.
 
 ## Getting Started 
 
