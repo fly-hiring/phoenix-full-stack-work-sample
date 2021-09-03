@@ -63,7 +63,7 @@ After you've submitted your project, we'll have 3 Fly.io engineers evaluate your
 - Don't spend time making this perfect. Rough edges are fine if it helps you move quickly, just note them in the summary.
 - Your code should be clear and easy to understand.
 - If something is too complicated, try to get by without it and explain what you wanted to do in the summary.
-- The notes are important! We want to know how you think about end users, how you ma
+- The notes are important! We want to know how you think about end users, how you make your decisions.
 
 ### What we don't care about
 
