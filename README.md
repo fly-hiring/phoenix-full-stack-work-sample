@@ -75,10 +75,12 @@ After you've submitted your project, we'll have 3 Fly.io engineers evaluate your
 
 To start your Phoenix server:
 
+  * [Install `flyctl` and sign up for a Fly.io account](https://fly.io/docs/getting-started/installing-flyctl/)
   * Install dependencies with `mix deps.get`
   * Install Node.js dependencies with `npm install` inside the `assets` directory
   * Compile assets with `npm run deploy`
   * Start Phoenix endpoint with `mix phx.server`
+  * Run `flyctl auth token` to print your API token
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
