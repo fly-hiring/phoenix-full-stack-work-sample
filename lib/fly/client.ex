@@ -210,6 +210,12 @@ defmodule Fly.Client do
               }
             }
           }
+          deploymentStatus {
+            id
+            status
+            description
+            version
+          }
         }
       }
     """
