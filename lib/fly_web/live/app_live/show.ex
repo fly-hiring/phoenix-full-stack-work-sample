@@ -70,4 +70,14 @@ defmodule FlyWeb.AppLive.Show do
   def preview_url(app) do
     "https://#{app["name"]}.fly.dev"
   end
+
+  def format_date(date) do
+    case DateTime.from_iso8601(date) do
+      {:ok, date, _offset} ->
+        Calendar.strftime(date, "%c %Z")
+
+      {:error, reason} ->
+        Logger.error("Failed to format date. Reason: #{inspect(reason)}")
+    end
+  end
 end
