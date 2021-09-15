@@ -103,9 +103,16 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                       <%= pg["name"] %>
                                     </td>
+                                    <%= if length(pg["regions"]) > 0 do %>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                      <%= pg["regions"] %>
+                                      <%# print regions separated by commas %>
+                                      <%= Enum.map_join(pg["regions"], ",", &(&1)) %>
                                     </td>
+                                    <% else %>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      No regions
+                                    </td>
+                                    <% end %>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                       <%= pg["vmSize"]["name"] %>
                                     </td>
