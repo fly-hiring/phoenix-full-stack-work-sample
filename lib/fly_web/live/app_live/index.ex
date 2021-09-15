@@ -18,7 +18,9 @@ defmodule FlyWeb.AppLive.Index do
 
     # Only make the API call if the websocket is setup. Not on initial render.
     if connected?(socket) do
-      {:ok, fetch_apps(socket)}
+      # Update immediately after mount
+      Process.send_after(self(), :update, 0)
+      {:ok, socket}
     else
       {:ok, socket}
     end
@@ -28,18 +30,28 @@ defmodule FlyWeb.AppLive.Index do
     Fly.Client.config(access_token: session["auth_token"] || System.get_env("FLYIO_ACCESS_TOKEN"))
   end
 
+  @impl true
+  def handle_info(:update, socket) do
+    socket = fetch_apps(socket)
+
+    # Refresh after 3 seconds
+    Process.send_after(self(), :update, 3000)
+
+    {:noreply, socket}
+  end
+
   defp fetch_apps(socket) do
     case Client.fetch_apps(socket.assigns.config) do
       {:ok, apps} ->
-        assign(socket, :apps, apps)
+        socket |> assign(:apps, apps)
 
       {:error, :unauthorized} ->
-        put_flash(socket, :error, "Not authenticated")
+        socket |> put_flash(:error, "Not authenticated")
 
       {:error, reason} ->
         Logger.error("Failed to load apps. Reason: #{inspect(reason)}")
 
-        put_flash(socket, :error, reason)
+        socket |> put_flash(:error, reason)
     end
   end
 
