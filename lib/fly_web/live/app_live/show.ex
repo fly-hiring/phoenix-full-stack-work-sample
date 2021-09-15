@@ -32,7 +32,7 @@ defmodule FlyWeb.AppLive.Show do
   defp fetch_app(socket) do
     app_name = socket.assigns.app_name
 
-    case Client.fetch_app(app_name, socket.assigns.config) do
+    case Client.fetch_app(app_name, socket.assigns.config, true) do
       {:ok, app} ->
         assign(socket, :app, app)
 
@@ -69,15 +69,5 @@ defmodule FlyWeb.AppLive.Show do
 
   def preview_url(app) do
     "https://#{app["name"]}.fly.dev"
-  end
-
-  def format_date(date) do
-    case DateTime.from_iso8601(date) do
-      {:ok, date, _offset} ->
-        Calendar.strftime(date, "%c %Z")
-
-      {:error, reason} ->
-        Logger.error("Failed to format date. Reason: #{inspect(reason)}")
-    end
   end
 end

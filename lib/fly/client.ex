@@ -174,9 +174,9 @@ defmodule Fly.Client do
     end
   end
 
-  def fetch_app(name, config) do
+  def fetch_app(name, config, show_completed_allocations) do
     """
-      query($name: String!) {
+      query($name: String!, $showCompletedAllocations: Boolean!) {
         app(name: $name) {
           id
           name
@@ -216,10 +216,19 @@ defmodule Fly.Client do
             description
             version
           }
+          allocations(showCompleted: $showCompletedAllocations) {
+            id
+            idShort
+            status
+          }
         }
       }
     """
-    |> perform_query(%{name: name}, config, :fetch_app)
+    |> perform_query(
+      %{name: name, showCompletedAllocations: show_completed_allocations},
+      config,
+      :fetch_app
+    )
     |> handle_response()
     |> case do
       {:ok, %{"app" => app}} ->
@@ -260,6 +269,63 @@ defmodule Fly.Client do
         Logger.error("Unexpected result from fetch_current_user. Response: #{inspect(other)}")
 
         {:error, "Failed to fetch user"}
+    end
+  end
+
+  # Fetchs an app's allocation using the app name and an allocation ID
+  def fetch_allocation(app_name, allocation_id, config) do
+    """
+      query($appName: String!, $selectedAllocation: String!) {
+        appstatus: app(name: $appName) {
+          id
+          name
+          allocation(id: $selectedAllocation) {
+            id
+            idShort
+            version
+            latestVersion
+            status
+            desiredStatus
+            totalCheckCount
+            passingCheckCount
+            warningCheckCount
+            criticalCheckCount
+            createdAt
+            updatedAt
+            canary
+            region
+            restarts
+            healthy
+            privateIP
+            taskName
+            checks {
+              status
+              output
+              name
+            }
+            events {
+              timestamp
+              type
+              message
+            }
+          }
+        }
+      }
+    """
+    |> perform_query(%{appName: app_name, selectedAllocation: allocation_id}, config, :fetch_apps)
+    |> handle_response()
+    |> case do
+      {:ok, %{"appstatus" => app_status}} ->
+        Logger.info("allocation returned: #{inspect(app_status)}")
+        {:ok, app_status}
+
+      {:error, _reason} = error ->
+        error
+
+      other ->
+        Logger.error("Unexpected result from fetch_allocation. Response: #{inspect(other)}")
+
+        {:error, "Failed to fetch fetch_allocation"}
     end
   end
 

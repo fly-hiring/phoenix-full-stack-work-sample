@@ -1,6 +1,8 @@
 defmodule FlyWeb.LiveHelpers do
   import Phoenix.LiveView.Helpers
 
+  require Logger
+
   @doc """
   Renders a component inside the `FlyWeb.ModalComponent` component.
 
@@ -52,5 +54,16 @@ defmodule FlyWeb.LiveHelpers do
     return_to = opts[:return_to] || ""
 
     "https://web.fly.io/app/auth/#{provider}/?origin=#{URI.encode_www_form(return_to)}"
+  end
+
+  # Formats an ISO8601 date to a common string with timezone, defined by the format "%c %Z"
+  def format_date(date) when is_binary(date) do
+    case DateTime.from_iso8601(date) do
+      {:ok, date, _offset} ->
+        Calendar.strftime(date, "%c %Z")
+
+      {:error, reason} ->
+        Logger.error("Failed to format date. Reason: #{inspect(reason)}")
+    end
   end
 end
