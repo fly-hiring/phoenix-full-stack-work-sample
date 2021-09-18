@@ -92,6 +92,7 @@ defmodule FlyWeb do
       import Phoenix.View
 
       import FlyWeb.ErrorHelpers
+      import FlyWeb.ViewHelpers
       import FlyWeb.Gettext
       alias FlyWeb.Router.Helpers, as: Routes
     end
