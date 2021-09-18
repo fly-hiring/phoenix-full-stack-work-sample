@@ -1,6 +1,6 @@
 # Fly.io Full Stack Phoenix Hiring Project
 
-Hello! This is a hiring project for our [Full Stack developer position](https://fly.io/blog/fly-io-is-hiring-full-stack-developers/). If you apply, we'll ask you to do this project so we can assess your ability build customer facing features with the Fly.io GraphQL api in an Elixir/Phoenix/LiveView application.
+Hello! This is a hiring project for our [Full Stack developer position](https://fly.io/blog/fly-io-is-hiring-full-stack-developers/). If you apply, we'll ask you to do this project so we can assess your ability to build customer facing features with the Fly.io GraphQL api in an Elixir/Phoenix/LiveView application.
 
 ## The Job
 
