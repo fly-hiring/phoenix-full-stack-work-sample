@@ -32,6 +32,8 @@ defmodule FlyWeb.AppLive.Show do
   defp fetch_app(socket) do
     app_name = socket.assigns.app_name
 
+    Process.send_after(self(), "refetch_app", 3_000)
+
     case Client.fetch_app(app_name, socket.assigns.config) do
       {:ok, app} ->
         assign(socket, :app, app)
@@ -49,6 +51,11 @@ defmodule FlyWeb.AppLive.Show do
   @impl true
   def handle_event("click", _params, socket) do
     {:noreply, assign(socket, count: socket.assigns.count + 1)}
+  end
+
+  @impl true
+  def handle_info("refetch_app", socket) do
+    {:noreply, fetch_app(socket)}
   end
 
   def status_bg_color(app) do
@@ -69,5 +76,19 @@ defmodule FlyWeb.AppLive.Show do
 
   def preview_url(app) do
     "https://#{app["name"]}.fly.dev"
+  end
+
+  def show_deploy?(app) do
+    not is_nil(app["version"]) and
+    app["version"] == app["deploymentStatus"]["version"]
+  end
+
+  def has_many_versions?(app) do
+    count =
+      app["allocations"]
+      |> Enum.uniq_by(&Map.get(&1, "version"))
+      |> length
+
+    count > 1
   end
 end
