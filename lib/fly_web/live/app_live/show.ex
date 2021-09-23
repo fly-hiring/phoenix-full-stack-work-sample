@@ -34,6 +34,7 @@ defmodule FlyWeb.AppLive.Show do
 
     case Client.fetch_app(app_name, socket.assigns.config) do
       {:ok, app} ->
+        IO.inspect app
         socket
         |> assign(:app, app)
         |> assign(:page_title, page_title(app_name))
@@ -75,4 +76,15 @@ defmodule FlyWeb.AppLive.Show do
 
   def page_title(app_name), do: "#{app_name} · Overview · Fly"
 
+  def version(app) do
+    case app["status"] do
+      "running" -> "v#{app["version"]}"
+      _ -> ""
+    end
+  end
+
+  def region_image_url(region), do: "https://fly.io/ui/images/#{region}.svg"
+
+  def latest_version?(%{"latestVersion" => true}, [_ | _]), do: true
+  def latest_version?(_, _), do: false
 end

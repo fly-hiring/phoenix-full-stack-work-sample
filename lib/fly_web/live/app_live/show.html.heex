@@ -33,7 +33,7 @@
             <h2 class="text-2xl font-bold leading-7 text-white-900 sm:text-3xl sm:truncate">
               <%= @app_name %>
               <p class={"px-2 mx-4 inline-flex text-xs leading-5 font-semibold rounded-full #{status_bg_color(@app)} #{status_text_color(@app)}"}>
-                <%= @app["status"] %>
+                <%= @app["status"] %> <%= version(@app) %>
               </p>
             </h2>
             <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
@@ -69,6 +69,106 @@
       <div class="max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
         <div class="space-y-6 lg:col-start-1 lg:col-span-2">
           <!-- Description list-->
+          <%= if @app["allocations"] && @app["allocations"] != [] do %>
+          <!-- Allocations/Instances -->
+          <section>
+            <div class="bg-white shadow sm:rounded-lg">
+              <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-lg leading-6 font-medium text-gray-900">
+                  Instances
+                </h2>
+              </div>
+              <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <div class="sm:col-span-2">
+                  <dd class="mt-1 text-sm text-gray-900">
+                    <div class="flex flex-col">
+                      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                          <div class="overflow-hidden border-b border-gray-200">
+                            <table class="min-w-full divide-y divide-gray-200">
+                              <thead class="bg-gray-50">
+                                <tr>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Task
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Version
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Region
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Desired
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Health Checks
+                                    <br/>
+                                    <small>total / passing</small>
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Restarts
+                                  </th>
+                                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Created
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <%= for allocation <- @app["allocations"] do %>
+                                  <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                      <%= allocation["idShort"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                      <%= allocation["taskName"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                      <%= allocation["version"] %>
+                                        <%= if latest_version?(allocation, @app["allocations"]) do %>
+                                          <span class="text-green-600">&uarr;</span>
+                                        <% end %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                      <img class="h-5 inline-block" src={region_image_url(allocation["region"])} />
+                                      <%= allocation["region"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      <%= allocation["desiredStatus"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      <%= allocation["status"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      <%= allocation["totalCheckCount"] %> / <%= allocation["passingCheckCount"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      <%= allocation["restarts"] %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                      <%= allocation["createdAt"] %>
+                                    </td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+              </div>
+            </div>
+          </section>
+          <% end %>
+
+          <!-- Process groups -->
           <section>
             <div class="bg-white shadow sm:rounded-lg">
               <div class="px-4 py-5 sm:px-6">

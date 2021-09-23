@@ -180,6 +180,7 @@ defmodule Fly.Client do
         app(name: $name) {
           id
           name
+          version
           organization {
             id
             slug
@@ -195,6 +196,21 @@ defmodule Fly.Client do
               cpuCores
               memoryMb
             }
+          }
+          allocations(showCompleted: true) {
+            id
+            idShort
+            version
+            latestVersion
+            status
+            desiredStatus
+            totalCheckCount
+            passingCheckCount
+            createdAt
+            region
+            restarts
+            healthy
+            taskName
           }
           releases(last: 5) {
             totalCount
