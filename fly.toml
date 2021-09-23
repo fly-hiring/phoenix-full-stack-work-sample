@@ -1,13 +1,13 @@
-# fly.toml file generated for flyio-ui-ex on 2021-08-26T16:42:20-05:00
+# fly.toml file generated for frosty-sun-3812 on 2021-09-23T09:49:54+04:00
 
-app = "flyio-ui-ex"
+app = "frosty-sun-3812"
 
 kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
 
 [env]
-auto_rollback = false
+  auto_rollback = false
 
 [experimental]
   allowed_public_ports = []
