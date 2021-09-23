@@ -34,7 +34,9 @@ defmodule FlyWeb.AppLive.Show do
 
     case Client.fetch_app(app_name, socket.assigns.config) do
       {:ok, app} ->
-        assign(socket, :app, app)
+        socket
+        |> assign(:app, app)
+        |> assign(:page_title, page_title(app_name))
 
       {:error, :unauthorized} ->
         put_flash(socket, :error, "Not authenticated")
@@ -70,4 +72,7 @@ defmodule FlyWeb.AppLive.Show do
   def preview_url(app) do
     "https://#{app["name"]}.fly.dev"
   end
+
+  def page_title(app_name), do: "#{app_name} · Overview · Fly"
+
 end
