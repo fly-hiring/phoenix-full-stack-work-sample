@@ -50,6 +50,12 @@ defmodule FlyWeb do
         layout: {FlyWeb.LayoutView, "live.html"},
         container: {:div, class: "h-full w-full"}
 
+      def handle_params(_params, uri, socket) do
+        %URI{
+          path: path
+        } = URI.parse(uri)
+        {:noreply, assign(socket, __path__: path)}
+      end
       unquote(view_helpers())
     end
   end

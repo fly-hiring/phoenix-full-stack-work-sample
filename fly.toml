@@ -1,13 +1,13 @@
-# fly.toml file generated for flyio-ui-ex on 2021-08-26T16:42:20-05:00
+# fly.toml file generated for flyio-toni-up on 2021-10-03T15:20:21+02:00
 
-app = "flyio-ui-ex"
+app = "flyio-toni-up"
 
 kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
 
 [env]
-auto_rollback = false
+  auto_rollback = false
 
 [experimental]
   allowed_public_ports = []

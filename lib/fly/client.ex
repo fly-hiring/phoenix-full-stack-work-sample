@@ -138,13 +138,28 @@ defmodule Fly.Client do
     end
   end
 
+  def regions_fragment(field_name \\ "regions") do
+    """
+      #{field_name} {
+        name
+        code
+      }
+    """
+  end
   def fetch_apps(config) do
     """
       query {
         apps {
           nodes {
             id
+            appUrl
+            ipAddresses {
+              nodes {
+                address
+              }
+            }
             name
+            hostname
             organization {
               id
               slug
@@ -153,6 +168,14 @@ defmodule Fly.Client do
             currentRelease {
     		      createdAt
     	      }
+            vmSize {
+              name
+              cpuCores
+              memoryMb
+              memoryGb
+            }
+            #{regions_fragment()}
+            #{regions_fragment("backupRegions")}
           }
         }
       }

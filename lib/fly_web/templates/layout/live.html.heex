@@ -1,8 +1,38 @@
-<div class="relative w-full h-full">
+<div class="h-full min-h-full flex flex-col">
+  <div class="bg-gray-800 pb-32">
+    <nav class="bg-gray-800">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="border-b border-gray-700">
+          <div class="flex items-center justify-between h-16 px-4 sm:px-0">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-12 w-12 rounded-full" src={Routes.static_path(@socket, "/images/fly-logo.png")} alt="Workflow">
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-2 flex items-baseline space-x-4">
+                  <HeaderLinks.render 
+                    currentUrl={@__path__}
+                    links={[
+                    {"Dashboard", Routes.app_index_path(@socket, :index), ~r/apps/},
+                    {"Billing", Routes.app_billing_path(@socket, :index), ~r/billing/}
+                    ]} />
+                </div>
+              </div>
+            </div>
+            <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+              <%= link to: Routes.delete_session_path(@socket, :delete), method: :delete,
+                class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-700" do %>
+                Sign Out
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
   <%= @inner_content %>
-
-  <FlyWeb.Components.flash_alert flash={@flash} type={:success} />
-  <FlyWeb.Components.flash_alert flash={@flash} type={:info} />
-  <FlyWeb.Components.flash_alert flash={@flash} type={:warn} />
-  <FlyWeb.Components.flash_alert flash={@flash} type={:error} />
 </div>
+<FlyWeb.Components.flash_alert flash={@flash} type={:success} />
+<FlyWeb.Components.flash_alert flash={@flash} type={:info} />
+<FlyWeb.Components.flash_alert flash={@flash} type={:warn} />
+<FlyWeb.Components.flash_alert flash={@flash} type={:error} />

@@ -1,10 +1,13 @@
 defmodule FlyWeb.AppLive.Index do
   use FlyWeb, :live_view
-
+  alias Phoenix.LiveView.Socket
+  alias FlyWeb.Endpoint
+  alias FlyWeb.Monitor
   require Logger
+  @apps_monitor_topic "apps_monitor"
 
   alias Fly.Client
-  alias FlyWeb.Components.HeaderBreadcrumbs
+  alias FlyWeb.Components.{HeaderBreadcrumbs, AppList, TabSelector, VolumeList, SideApp}
 
   @impl true
   def mount(_params, session, socket) do
@@ -13,12 +16,19 @@ defmodule FlyWeb.AppLive.Index do
         config: client_config(session),
         state: :loading,
         apps: [],
-        authenticated: true
+        authenticated: true,
+        selectedTab: "apps",
+        selectedApp: nil,
       )
 
     # Only make the API call if the websocket is setup. Not on initial render.
     if connected?(socket) do
-      {:ok, fetch_apps(socket)}
+      # Subscribe to the VM usage monitor simulation
+      Endpoint.subscribe(@apps_monitor_topic)
+      socket = fetch_apps(socket)
+      # Start the simulation for the machine usage
+      Monitor.start(socket.assigns.apps)
+      {:ok, socket}
     else
       {:ok, socket}
     end
@@ -42,20 +52,24 @@ defmodule FlyWeb.AppLive.Index do
         put_flash(socket, :error, reason)
     end
   end
-
-  def status_bg_color(app) do
-    case app["status"] do
-      "running" -> "bg-green-100"
-      "dead" -> "bg-red-100"
-      _ -> "bg-yellow-100"
-    end
+  @impl true
+  def handle_event("select-tab", %{"tab" => tab}, %Socket{} = socket) do
+    {:noreply, socket |> assign(:selectedTab, tab)}
   end
-
-  def status_text_color(app) do
-    case app["status"] do
-      "running" -> "text-green-800"
-      "dead" -> "text-red-800"
-      _ -> "text-yellow-800"
-    end
+  @impl true
+  def handle_event("select-app", %{"app_id" => appId}, %Socket{assigns: %{apps: apps}} = socket) do
+    appData = apps |> Enum.find(fn app -> app["id"] == appId end)
+    {:noreply, socket |> assign(:selectedApp, appData)}
+  end
+  def handle_event("close-app", _, %Socket{} = socket) do
+    {:noreply, socket |> assign(:selectedApp, nil)}
+  end
+  @impl true
+  def handle_info(%{event: "new_monitoring", payload: data}, socket) do
+    #send_update(
+    #  SurveyResultsLive,
+    #  id: socket.assigns.survey_results_component_id)
+    socket = socket |> assign(:apps, data)
+    {:noreply, socket}
   end
 end
